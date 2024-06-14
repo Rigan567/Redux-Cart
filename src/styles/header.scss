@@ -4,7 +4,10 @@ nav {
   display: flex;
   background-color: $secondary;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0.5rem 4rem;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
   > h2 {
     color: $primary;
     text-transform: uppercase;

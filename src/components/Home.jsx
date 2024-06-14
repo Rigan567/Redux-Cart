@@ -1,43 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-const img1 =
-  "https://cdnus.globalso.com/wellypaudio/Touch-Wireless-TWS-Gaming-Earbuds.jpg";
+const ProductCard = ({ name, id, price, handler, imgSrc, description }) => {
+  const [isEnabled, setIsEnabled] = useState(false);
 
-const img2 =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp25esgz9ESv6P0OywMHj2gLhU_f9oZnqEe03ihNLAHovgsUGmLY-9Yaoz1mnrveSrhM4&usqp=CAU";
+  const sliceDes = description.slice(0, 100);
+  const sliceName = name.slice(0, 5);
 
-const ProductCard = ({ name, id, price, handler, imgSrc }) => {
+  const toggleBar = () => {
+    setIsEnabled(!isEnabled);
+  };
+
   return (
-    <div className="productCard">
-      <img src={imgSrc} alt={name} />
-      <p>{name}</p>
-      <h4>${price}</h4>
-      <button onClick={() => handler({ name, price, id, quantity: 1, imgSrc })}>
-        Add to Cart
-      </button>
+    <div className="container">
+      <div className="productCard">
+        <img src={imgSrc} alt={name} />
+        <p>
+          {isEnabled ? name : `${sliceName}...   `}
+          <span
+            className="toggle"
+            onClick={toggleBar}
+            style={{ fontWeight: "650", cursor: "pointer" }}
+          >
+            {isEnabled ? "   See Less" : "   See More"}
+          </span>
+        </p>
+        <h4>${price}</h4>
+        <p>
+          {isEnabled ? description : `${sliceDes}...   `}
+          <span
+            className="toggle"
+            onClick={toggleBar}
+            style={{ fontWeight: "650", cursor: "pointer" }}
+          >
+            {isEnabled ? "   See Less" : "   See More"}
+          </span>
+        </p>
+      </div>
+      <div className="btndiv">
+        <button
+          onClick={() => handler({ name, price, id, quantity: 1, imgSrc })}
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 };
 
 const Home = () => {
-  const productList = [
-    {
-      name: "EarBuds",
-      price: "2000",
-      imgSrc: img1,
-      id: "dasdasdasd",
-    },
-    {
-      name: "Black Shoes",
-      price: "10000",
-      imgSrc: img2,
-      id: "diuotyuiot",
-    },
-  ];
+  const [productList, setProductList] = useState([]);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/")
+      .then((res) => res.json())
+      .then((data) => setProductList(data));
+  }, [productList]);
 
   const addToCartHandler = (options) => {
     dispatch({ type: "addToCart", payload: options });
@@ -51,9 +72,10 @@ const Home = () => {
       {productList.map((product) => (
         <ProductCard
           key={product.id}
-          imgSrc={product.imgSrc}
-          name={product.name}
+          imgSrc={product.image}
+          name={product.title}
           price={product.price}
+          description={product.description}
           id={product.id}
           handler={addToCartHandler}
         />

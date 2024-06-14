@@ -6,10 +6,22 @@
   flex-wrap: wrap;
   padding: 3rem;
 }
-.productCard {
+.container {
+  padding: 1rem;
+  width: 270px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 20px;
   background-color: $tertiary;
-  width: 200px;
-  margin: 2.5rem;
+  border-radius: 30px;
+}
+.productCard {
+  width: 250px;
+  max-height: fit-content;
+  margin: 2rem;
   border-radius: 10px;
   padding: 2rem;
   display: flex;
@@ -21,9 +33,9 @@
   }
 
   img {
-    width: 140%;
-    height: 100%;
-    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
     margin-bottom: 0.5rem;
   }
   p {
@@ -35,6 +47,13 @@
     color: $primary;
     margin-bottom: 0.5rem;
   }
+}
+.btndiv {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  padding: 5px;
+
   button {
     background-color: $secondary;
     border: none;
