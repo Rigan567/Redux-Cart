@@ -1,10 +1,52 @@
 @import "colors";
 
+.category_tab {
+  height: 5vmax;
+  // width: 100%;
+  background-color: $primary;
+  border-bottom: 2px solid rgb(172, 44, 150);
+
+  .category_btns {
+    // border: 2px solid red;
+    height: 5vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > button {
+      padding: 0.5rem;
+      width: 100px;
+      margin: 10px;
+      border-radius: 20px 20px 0 20px;
+      border: none;
+      color: $tertiary;
+      background-color: rgb(172, 44, 150);
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-weight: 550;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background-color: rgb(126, 28, 109);
+        scale: 1.01;
+      }
+    }
+  }
+}
+
 .home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 3rem;
+  padding: 3rem 2rem;
+
+  .products_tab {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 .container {
   padding: 1rem;

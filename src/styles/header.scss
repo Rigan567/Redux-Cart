@@ -35,5 +35,15 @@ nav {
         transform: translate(80%, -80%);
       }
     }
+    .nav_btn {
+      background-color: transparent;
+      border: none;
+      margin-left: 50px;
+      display: none;
+      > svg {
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }

@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 import Home from "./Components/Home";
 import Cart from "./Components/Cart";
+// import { useState } from "react";
 
 function App() {
   return (

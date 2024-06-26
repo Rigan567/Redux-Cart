@@ -22,3 +22,103 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  @import "colors";
+
+  .cart {
+    grid-template-columns: 1fr;
+
+    > aside {
+      background-color: $primary;
+      color: $tertiary;
+      height: 100%;
+      width: 100%;
+      box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      > h2 {
+        margin: 1rem;
+        font: 100 1.2rem "Roboto";
+        letter-spacing: 2px;
+      }
+    }
+  }
+  .nav_btn {
+    display: block !important;
+  }
+  .category_tab {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  @import "colors";
+
+  .logo {
+    position: relative;
+    left: -10%;
+  }
+
+  .nav_btn {
+    position: relative;
+    right: 4vmax !important;
+  }
+
+  .products_tab {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    // border: 2px solid wheat;
+    position: relative;
+    top: 20% !important;
+  }
+}
+.container {
+  // padding: 1rem;
+  position: relative !important;
+  left: -20px !important;
+  width: 150px;
+  text-wrap: wrap !important;
+  max-height: fit-content !important;
+  gap: 0.5rem;
+}
+.productCard {
+  width: 250px;
+
+  padding: 0rem;
+  transition: all 0.5s;
+  position: relative;
+  top: -20px;
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
+  .des_p {
+    display: none;
+  }
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+.btndiv {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  padding: 5px;
+
+  button {
+    background-color: $secondary;
+    padding: 0.5rem;
+    width: 100%;
+    position: relative;
+    top: -90px;
+    cursor: pointer;
+    &:hover {
+      background-color: $secondarydark;
+    }
+  }
+}
