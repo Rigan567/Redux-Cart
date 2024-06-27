@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Header from "./Header";
+import { Link, useParams } from "react-router-dom";
 
-const ProductCard = ({
+export const ProductCard = ({
   name,
   id,
   price,
-  category,
+
   handler,
   imgSrc,
   description,
@@ -61,12 +62,10 @@ const ProductCard = ({
   );
 };
 
-export const NavContent = () => {};
-
 const Home = () => {
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  const { category } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -74,19 +73,18 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         setProductList(data);
-        setFilteredProducts(data);
+        filterProducts(category);
       });
-  }, [productList]);
+  }, [category]);
 
   const addToCartHandler = (options) => {
     dispatch({ type: "addToCart", payload: options });
-
     dispatch({ type: "calculatePrice" });
     toast.success("Added to Cart");
   };
 
   const filterProducts = (category) => {
-    if (category === "all") {
+    if (category === "all" || !category) {
       setFilteredProducts(productList);
     } else {
       const filtered = productList.filter(
@@ -98,21 +96,15 @@ const Home = () => {
 
   return (
     <>
-      <Header filterProducts={filterProducts} />
+      <Header />
       <div className="home">
         <div className="category_tab">
           <div className="category_btns">
-            <button onClick={() => filterProducts("all")}>all</button>
-            <button onClick={() => filterProducts("men's clothing")}>
-              Men
-            </button>
-            <button onClick={() => filterProducts("women's clothing")}>
-              Women
-            </button>
-            <button onClick={() => filterProducts("electronics")}>
-              Electronics
-            </button>
-            <button onClick={() => filterProducts("jewelery")}>Jewelery</button>
+            <Link to="/category/all">All</Link>
+            <Link to="/category/men's clothing">Men</Link>
+            <Link to="/category/women's clothing">Women</Link>
+            <Link to="/category/electronics">Electronics</Link>
+            <Link to="/category/jewelery">Jewelery</Link>
           </div>
         </div>
         <div className="products_tab">

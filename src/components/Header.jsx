@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 import { IoReorderThree } from "react-icons/io5";
 import Sidebar from "./Sidebar";
 
-const Header = ({ filterProducts }) => {
+const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <>
       <nav>
-        <h2 className="logo">Shopping Cart</h2>
+        <h2 className="logo">STORE</h2>
         <div>
           <Link to={"/"}>Home</Link>
           <Link to={"/cart"}>
@@ -23,11 +23,7 @@ const Header = ({ filterProducts }) => {
           </button>
         </div>
       </nav>
-      <Sidebar
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-        filterProducts={filterProducts}
-      />
+      <Sidebar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
     </>
   );
 };

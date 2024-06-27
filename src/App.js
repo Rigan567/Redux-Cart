@@ -6,7 +6,6 @@ import { Toaster } from "react-hot-toast";
 
 import Home from "./Components/Home";
 import Cart from "./Components/Cart";
-// import { useState } from "react";
 
 function App() {
   return (
@@ -14,6 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/category/:category" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
       <Toaster />

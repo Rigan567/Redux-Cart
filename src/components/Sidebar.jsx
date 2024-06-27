@@ -1,11 +1,8 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
-const Sidebar = ({ menuOpen, setMenuOpen, filterProducts }) => {
-  const handleFilter = (category) => {
-    filterProducts(category);
-    setMenuOpen(false); // Close the sidebar after filtering
-  };
+const Sidebar = ({ menuOpen, setMenuOpen }) => {
   return (
     <div className={`sidebar ${menuOpen ? "open" : ""}`}>
       <button className="close-btn" onClick={() => setMenuOpen(false)}>
@@ -13,46 +10,27 @@ const Sidebar = ({ menuOpen, setMenuOpen, filterProducts }) => {
       </button>
       <div className="mob_nav_container">
         <div className="mob_category_btns">
-          <button
-            onClick={() => {
-              handleFilter("all");
-              setMenuOpen(false);
-            }}
-          >
+          <Link to="/category/all" onClick={() => setMenuOpen(false)}>
             All
-          </button>
-          <button
-            onClick={() => {
-              handleFilter("men's clothing");
-              setMenuOpen(false);
-            }}
+          </Link>
+          <Link
+            to="/category/men's clothing"
+            onClick={() => setMenuOpen(false)}
           >
             Men
-          </button>
-          <button
-            onClick={() => {
-              handleFilter("women's clothing");
-              setMenuOpen(false);
-            }}
+          </Link>
+          <Link
+            to="/category/women's clothing"
+            onClick={() => setMenuOpen(false)}
           >
             Women
-          </button>
-          <button
-            onClick={() => {
-              handleFilter("electronics");
-              setMenuOpen(false);
-            }}
-          >
+          </Link>
+          <Link to="/category/electronics" onClick={() => setMenuOpen(false)}>
             Electronics
-          </button>
-          <button
-            onClick={() => {
-              handleFilter("jewelery");
-              setMenuOpen(false);
-            }}
-          >
+          </Link>
+          <Link to="/category/jewelery" onClick={() => setMenuOpen(false)}>
             Jewelery
-          </button>
+          </Link>
         </div>
       </div>
     </div>
