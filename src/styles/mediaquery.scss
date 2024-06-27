@@ -79,29 +79,39 @@
     // padding: 1rem;
     position: relative !important;
     left: -20px !important;
-    width: 150px;
+    width: 160px;
     text-wrap: wrap !important;
     max-height: fit-content !important;
     gap: 0.5rem;
   }
   .productCard {
-    width: 250px;
-
+    // border: 2px solid aqua;
+    width: 160px;
+    min-height: 250px;
+    max-height: fit-content;
     padding: 0rem;
     transition: all 0.5s;
     position: relative;
     top: -20px;
     img {
-      width: 50px;
-      height: 50px;
+      width: 110px;
+      height: 110px;
       object-fit: contain;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      // border: 2px solid red;
     }
     .des_p {
       display: none;
     }
+    .name_p {
+      text-wrap: wrap;
+      // border: 2px solid yellow;
+      width: 120px;
+    }
     h4 {
-      margin-bottom: 0.5rem;
+      width: 50px;
+      text-wrap: wrap;
+      margin-bottom: 5rem;
     }
   }
   .btndiv {

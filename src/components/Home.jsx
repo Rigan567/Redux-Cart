@@ -73,7 +73,11 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         setProductList(data);
-        filterProducts(category);
+        if (category) {
+          filterProducts(category);
+        } else {
+          setFilteredProducts(data);
+        }
       });
   }, [category]);
 
